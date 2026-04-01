@@ -1,4 +1,4 @@
-#### Writeup – Oopsie
+# Writeup – Oopsie
 
 ## Attack Path
 1. Nmap scan → Port 80
