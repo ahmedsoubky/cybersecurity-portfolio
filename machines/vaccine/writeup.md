@@ -106,7 +106,7 @@ stty raw -echo
 fg
 export TERM=xterm
 ```
-- User flag can be found in var/lib/postgresql/
+- User flag can be found in var/lib/postgresql/user.txt ec9b13ca4d6229cd5cc1e09980965bf7
 
 ### 7 Privilege escalation
 - Now we are user postgres but sudo privileges can't be checked. Try to find the password in /var/www/html
