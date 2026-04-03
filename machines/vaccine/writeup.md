@@ -127,4 +127,10 @@ sudo /bin/vi /etc/postgresql/11/main/pg_hba.conf
 ```
 - Press the button : button to set the instructions inside Vi::set shell=/bin/sh
 - Type :shell
-- 
+- Check root with whoami command
+- Change directory to root
+```bash
+sudo cd /root/
+```
+- Root flog dd6e058e814260bc70e9bbdef2715849
+
