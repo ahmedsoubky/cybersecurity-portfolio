@@ -59,7 +59,7 @@ unzip backup.zip
 ls -la
 ```
 
-## 4. Identify the hash type & crack it with the hashcat
+### 4. Identify the hash type & crack it with the hashcat
 ```bash
 hashid 2cb42f8734ea607eefed3b70af13bbd3
 ```
