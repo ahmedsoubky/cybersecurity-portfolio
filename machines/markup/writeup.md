@@ -2,9 +2,9 @@
 
 ## Attack Path
 ### 1. Nmap scan
-sudo nmap -sC -A -Pn 10.129.20.47
+sudo nmap -sC -A -Pn 10.129.21.6
 
-## 2. Go to the webserver by typing 10.129.20.47:80 into browser and use credentials admin:password to login
+## 2. Go to the webserver by typing 10.129.21.6:80 into browser and use credentials admin:password to login
 
 ## 3. Start BurpSuite, set up FroxyProxy to intercept requests from port 8080 and interact with the input fields by filling in some random information and pressing the Submit button.
 
@@ -27,5 +27,5 @@ sudo nmap -sC -A -Pn 10.129.20.47
 touch id_rsa
 ls -la id_rsa
 chmod 400 id_rsa
-ssh -i id_rsa daniel@10.129.20.47
+ssh -i id_rsa daniel@10.129.21.6
 user flag can be retrieved from  C:\Users\daniel\Desktop
