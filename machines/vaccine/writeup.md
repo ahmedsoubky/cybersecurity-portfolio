@@ -132,5 +132,5 @@ sudo /bin/vi /etc/postgresql/11/main/pg_hba.conf
 ```bash
 sudo cd /root/
 ```
-- Root flog dd6e058e814260bc70e9bbdef2715849
+- Root flag dd6e058e8
 
