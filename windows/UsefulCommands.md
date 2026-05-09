@@ -33,3 +33,35 @@ A concise reference of essential Windows networking commands for troubleshooting
 - Some commands (like `telnet`) may require enabling Windows optional features.
 - Use administrative privileges when necessary (e.g., modifying routes).
 
+
+| Command | Purpose / What It Reveals |
+| --- | --- |
+| ``whoami ``/priv`` | Shows enabled/disabled privileges (e.g., SeImpersonate, SeBackup). Critical for token abuse. |
+| ``whoami ``/groups`` | Lists group memberships that may allow escalation (Backup Operators, Remote Management Users). |
+| ``systeminfo`` | OS version, hotfixes, kernel build — used for kernel exploit matching. |
+| ``wmic ``qfe`` | Lists installed patches; missing patches = escalation vectors. |
+| ``wmic ``service ``get ``name,displayname,pathname,startmode`` | Finds unquoted service paths and writable service binaries. |
+| ``sc ``qc ``<service>`` | Displays service configuration (binary path, privileges, start type). |
+| ``sc ``query ``state= ``all`` | Lists all services, including stopped ones that may be misconfigured. |
+| ``accesschk64.exe ``-uwcqv ``"Users" ``*`` | Checks which services Users can modify (service misconfig). |
+| ``icacls ``<path>`` | Shows file/folder permissions — used to find writable executables or config files. |
+| `dir /a /s C:\\ | findstr /i "config.ini .xml .txt"` | Searches for readable config files containing credentials. |
+| ``findstr ``/si ``password ``*.txt ``*.xml ``*.ini`` | Finds plaintext passwords in common config files. |
+| ``reg ``query ``HKLM\\Software`` | Enumerates registry keys for stored credentials or misconfigurations. |
+| ``reg ``query ``HKLM\\SYSTEM\\CurrentControlSet\\Services ``/s`` | Finds service misconfigurations and weak permissions. |
+| ``schtasks ``/query ``/fo ``LIST ``/v`` | Lists scheduled tasks — look for writable actions or scripts. |
+| ``tasklist ``/v`` | Shows running processes with window titles and owners. |
+| ``wmic ``process ``get ``Caption,Processid,Commandline`` | Lists processes with full command-line arguments (password leaks). |
+| ``net ``localgroup ``administrators`` | Shows local admin users — useful for lateral movement. |
+| ``net ``user ``<username>`` | Shows password requirements, last set time, group membership. |
+| ``Get-LocalGroupMember ``-Group ``"Administrators"`` | PowerShell version of local admin enumeration. |
+| ``Get-ScheduledTask`` | PowerShell enumeration of scheduled tasks. |
+| ``Get-Acl ``<path>`` | Shows ACLs on files/folders — useful for DLL hijacking or writable binaries. |
+| ``Get-WmiObject ``-Class ``Win32_Service`` | PowerShell service enumeration with full metadata. |
+| ``Get-SmbShare`` | Lists SMB shares — often contain writable folders for escalation. |
+| ``klist`` | Shows Kerberos tickets — useful for delegation, S4U, and token abuse. |
+| ``nltest ``/domain_trusts`` | Lists domain trusts — useful for cross-domain escalation. |
+| ``nltest ``/dsgetdc:<domain>`` | Finds domain controller — needed for Kerberos/LDAP escalation. |
+| ``gpresult ``/r`` | Shows applied GPOs — sometimes reveal passwords in SYSVOL. |
+| ``Get-ChildItem ``-Recurse ``\\\\<domain>\\SYSVOL`` | Enumerates SYSVOL for GPP password leaks. |
+| ``wevtutil ``qe ``Security ``/q:"*[System[(EventID=4624)]]"`` | Finds successful logins — useful for identifying privileged accounts. |
